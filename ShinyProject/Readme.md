@@ -1,2 +1,2 @@
 
-![ScreenShot](/images/SRW.png)
+![alt text](http://url/to/img.png)
