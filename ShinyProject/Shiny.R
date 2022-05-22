@@ -6,7 +6,7 @@ check.packages <- function(pkg){
     install.packages(new.pkg, dependencies = TRUE)
   sapply(pkg, require, character.only = TRUE)
 }
-packages<-c("ggplot2", "dplyr", "tidyverse", "plotly", "ggthemes", "tidyr","shiny","shinydashboard")
+packages <- c("ggplot2", "dplyr", "tidyverse", "plotly", "ggthemes", "tidyr","shiny","shinydashboard")
 check.packages(packages)
 
 ################################################################################
