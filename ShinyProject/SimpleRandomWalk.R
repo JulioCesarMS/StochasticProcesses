@@ -6,8 +6,9 @@
 ##################   Installing and Reading packages   #########################
 check.packages <- function(pkg){
   new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
-  if (length(new.pkg)) 
+  if (length(new.pkg)){ 
     install.packages(new.pkg, dependencies = TRUE)
+  }
   sapply(pkg, require, character.only = TRUE)
 }
 packages<-c("ggplot2", "dplyr", "tidyverse", "plotly", "ggthemes", "tidyr","stringr")
@@ -40,14 +41,14 @@ simple.random.walk <- function(n.steps,n.sim,prob.r=0.5){
 }
 ################################################################################
 #######  Ejemplo (app):
-n.steps <- 10000   # n˙mero de pasos
-n.sim <- 1000     # n˙mero de trajectorias
+n.steps <- 10000   # n√∫mero de pasos
+n.sim <- 1000     # n√∫mero de trajectorias
 a <- 0.5          # probabilidad a la derecha
 
-# simulaciÛn
+# simulaci√≥n
 df <- simple.random.walk(n.steps,n.sim,prob.r=a)
 
-##  Base para gr·fico
+##  Base para gr√°fico
 df_rw <- df  %>%
   gather(key='t',value='valor',-sim) %>%
   mutate(t = as.numeric(substring(t,4,10))) %>%
@@ -58,7 +59,7 @@ moments_rw <- data.frame('t'=c(1:n.steps),'a'=a) %>%
          'sd_sup'=mean + 2*sqrt(4*t*a*(1-a)),
          'sd_inf'=mean - 2*sqrt(4*t*a*(1-a)))
 
-# Gr·fico de trajectorias  
+# Gr√°fico de trajectorias  
 p1 <- ggplot(df_rw,aes(x=t,y=valor,color=sim)) +
   geom_line() +
   geom_line(moments_rw, mapping=aes(x=t,y=mean),col='red',size=0.7) +
@@ -69,14 +70,14 @@ p1 <- ggplot(df_rw,aes(x=t,y=valor,color=sim)) +
   ggtitle(paste(n.sim," trayectorias del camino aleatorio simple.",sep=''))
 
 
-## DistribuciÛn al tiempo t
+## Distribuci√≥n al tiempo t
 t.selected <- 1000
 
 df_dist <- df_rw %>% filter(t==t.selected)
 
 p2 <- ggplot(df_dist,aes(valor)) +
   geom_histogram(bins=20,fill='red',col="white") +
-  ggtitle(paste("DistribuciÛn al tiempo t = ",t.selected,sep="")) +
+  ggtitle(paste("Distribuci√≥n al tiempo t = ",t.selected,sep="")) +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
         axis.ticks.x=element_blank(),
