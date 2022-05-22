@@ -152,4 +152,4 @@ server <- function(input,output){
   
 }
 # run app
-#shinyApp(ui, server)
+shinyApp(ui, server)
