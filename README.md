@@ -5,5 +5,5 @@
 </li>
 
 <li class="masthead__menu-item">
-          <a href= "https://nbviewer.org/github/JulioCesarMS/StochasticProcesses/blob/main/RandomWalk/Pearson%20Random%20Walk%20-%20Python.ipynb">Pearson Random Walk</a>
+          <a href= "https://nbviewer.org/github/JulioCesarMS/StochasticProcesses/blob/main/RandomWalk/Pearson%20Random%20Walk%20in%20Python.ipynb">Pearson Random Walk</a>
 </li>
